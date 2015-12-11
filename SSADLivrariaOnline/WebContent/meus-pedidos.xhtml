@@ -84,9 +84,14 @@
 						</h:column>
 						
 						<h:column>
+							<f:facet name="header">Data</f:facet>
+							#{carrinho.dataEmissao}
+						</h:column>
+						
+						<h:column>
 							<f:facet name="header">Conteúdo</f:facet>
 							<c:forEach items="#{carrinho.itens}" var="item">
-								#{carrinhoBean.buscarItem(item.id)}
+								#{carrinhoBean.buscaritem(carrinho.id)}
 								<br/>
 							</c:forEach>
 						</h:column>

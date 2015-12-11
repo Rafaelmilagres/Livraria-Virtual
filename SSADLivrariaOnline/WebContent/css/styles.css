@@ -358,6 +358,10 @@ footer{
 	margin-top: 10px;
 }
 
+.navbar-default .navbar-nav > li > a:hover {
+	background-color: #f0f0f0 !important;
+} 
+
 .dropdown-menu li a{
 	display: block;
 	padding: 3px 20px;
@@ -372,3 +376,19 @@ footer{
 	text-decoration: none;
 	background-color: #F5F5F5;
 }
+
+.table th:first-child{
+	width: 130px;
+}
+
+.table th:nth-child(2), .table th:nth-child(4){
+	width: 110px;
+}
+
+.container-fluid input, .container-fluid select{
+	margin-right: 5px;
+}
+
+.navbar-form{
+	padding: 0px 10px 0px 0 !important;
+} 
