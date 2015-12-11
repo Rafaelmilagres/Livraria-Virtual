@@ -7,6 +7,7 @@ import br.ssad.livraria.model.Livro;
 public interface ILivroDAO {
 	public void cadastrar(Livro livro);
 	public List<Livro> listar();
+	public List<Livro> listarComQuantidade();
 	public void editarPreco(Livro livro);
 	public Livro buscar(Long id);
 	public List<Livro> buscarCategoria(Long id);

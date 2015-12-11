@@ -61,8 +61,14 @@ public class LivroBean {
 		tipoBusca = (long)1;
 		return "index";
 	}
-	
+
 	public List<Livro> getLivros() {
+		if(livros == null)
+			livros = dao.listarComQuantidade();
+		
+		return livros;
+	}
+	public List<Livro> getLivrosGeral() {
 		if(livros == null)
 			livros = dao.listar();
 		

@@ -90,10 +90,12 @@
 						
 						<h:column>
 							<f:facet name="header">Conteúdo</f:facet>
-							<c:forEach items="#{carrinho.itens}" var="item">
-								#{carrinhoBean.buscaritem(carrinho.id)}
-								<br/>
-							</c:forEach>
+							
+							<h:dataTable value="#{carrinhoBean.buscarItensCarrinho(carrinho.id)}" var="item" border="0">
+							<h:column>
+								#{item.livro.nome}
+							</h:column>
+						</h:dataTable>
 						</h:column>
 						
 						<h:column>

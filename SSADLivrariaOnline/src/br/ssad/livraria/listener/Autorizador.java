@@ -16,6 +16,7 @@ public class Autorizador implements PhaseListener {
 	private static final long serialVersionUID = 1L;
 	
 	private final String URL_LOGIN = "/login.xhtml";
+	private final String URL_INDEX = "/index.xhtml";
 	private final String URL_GERENTE_DASHBOARD = "/gerente-dashboard.xhtml";
 	private final String URL_GERENTE_CAD_CATEGORIA = "/gerente-cad-categoria.xhtml";
 	private final String URL_GERENTE_CAD_CLIENTE = "/gerente-cad-cliente.xhtml";
@@ -26,7 +27,8 @@ public class Autorizador implements PhaseListener {
 	public void afterPhase(PhaseEvent event) {
 		FacesContext context = event.getFacesContext();
 		
-		if(URL_LOGIN.equals(context.getViewRoot().getViewId()))
+		//if(URL_LOGIN.equals(context.getViewRoot().getViewId()))
+		if(URL_LOGIN.equals(context.getViewRoot().getViewId()) || URL_INDEX.equals(context.getViewRoot().getViewId()))
 			return;
 		
 		LoginBean loginBean = context.getApplication().evaluateExpressionGet(context, "#{loginBean}", LoginBean.class);

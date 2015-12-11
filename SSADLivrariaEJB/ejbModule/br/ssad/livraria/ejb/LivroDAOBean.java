@@ -28,10 +28,15 @@ public class LivroDAOBean implements ILivroDAO {
 		em.merge(livro);
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Livro> listar() {
-		Query q = em.createQuery("SELECT p FROM Livro p");
+		Query q = em.createQuery("SELECT p FROM Livro p ORDER BY id DESC");
+		return q.getResultList();
+	}
+	
+	@Override
+	public List<Livro> listarComQuantidade() {
+		Query q = em.createQuery("SELECT p FROM Livro p where qtde > 0 ORDER BY id DESC");
 		return q.getResultList();
 	}
 

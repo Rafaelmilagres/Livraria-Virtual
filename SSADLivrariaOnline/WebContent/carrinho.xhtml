@@ -105,16 +105,15 @@
 						<label for="cep">CEP:</label>
 						<input type="text" id="cep" class="form-control" required="true" />
 						<button id="calcula-frete" class="btn btn-primary">Calcular Frete</button>
-						<p id="sedex">Sedex: R$ </p>
-						<p id="pac">Pac: R$ </p>
-						<p>Insira abaixo o valor do frete escolhido.</p>
 						<span>R$</span>
 						
 						<h:form> 
 							<h:inputText class="valor-frete" value="#{carrinhoBean.carrinho.frete}" required="true"/>
 							
-							<div class="cleafix"></div>
-							<h:commandButton class="btn btn-primary btn-finalizar" value="Finalizar Compra" action="#{carrinhoBean.finalizar()}" />
+							<div class="clearfix"></div>
+							<div class="btn-aux">
+								<h:commandButton class="btn btn-primary btn-finalizar" value="Finalizar Compra" action="#{carrinhoBean.finalizar()}" />
+							</div>
 						</h:form>
 					</div>
 					</div>
@@ -134,6 +133,7 @@
 
 			calculaFrete("36202025", $('#cep').val(), "0.300", $('#valor-total').text());
 			setTimeout(function(){
+				$('.valor-frete').val(pac);
 				$('#pac').text("Pac: R$ " + pac);
 				$('#sedex').text("Sedex: R$ " + sedex);
 			}, 2000);

@@ -76,7 +76,7 @@
 					<div class="col-md-8 col-md-offset-2">
 						<!-- Loja -->
 						<div class="list-group livros-cadastrados">
-							<c:forEach var="livro" items="#{livroBean.livros}">
+							<c:forEach var="livro" items="#{livroBean.livrosGeral}">
 								<h:commandLink action="gerente-cad-livro.xhtml" value="Alterar">
 									<f:setPropertyActionListener value="#{livro}" target="#{gerenteBean.livro}" />
 								</h:commandLink>

@@ -49,24 +49,10 @@ public class CarrinhoBean {
 		return "carrinho";
 	}
 	
-	public void alterarItem() {
-		for(int i = 0; i < this.carrinho.getItens().size(); i++) {
-			if(this.carrinho.getItens().get(i).getLivro().getId() == this.item.getLivro().getId()) {
-				if(this.qtdeItem <= 0) {
-					this.carrinho.getItens().get(i).setQtde(1);
-					this.qtdeItem = 1;
-				}
-				else if(this.carrinho.getItens().get(i).getQtde() > this.carrinho.getItens().get(i).getLivro().getQtde())
-					this.carrinho.getItens().get(i).setQtde(this.carrinho.getItens().get(i).getLivro().getQtde());
-				else
-					this.carrinho.getItens().get(i).setQtde(this.qtdeItem);
-			}
-		}
+	public String cadastrar() {		
+		if(carrinho == null || this.carrinho.getItens() == null || this.carrinho.getItens().size() == 0)
+			return "carrinho";
 		
-		this.item = new Item();
-	}
-	
-	public String cadastrar() {
 		// percorre os itens do carrinho e atuaiza a quantidade de cada um no banco
 		for(int i = 0; i < this.carrinho.getItens().size(); i++) {
 			this.carrinho.getItens().get(i).getLivro().setQtde(this.carrinho.getItens().get(i).getLivro().getQtde() - 
@@ -105,13 +91,18 @@ public class CarrinhoBean {
 		return carrinhos;
 	}
 	
+	public List<Item> buscarItensCarrinho(Long id){
+		return carrinhoDao.buscarItensCarrinho(id);
+	}
+	
 	public String buscarItem(Long id){
-		return carrinhoDao.buscarItem(id).getLivro().getNome();
+		return "foiiii";
+		//return String.format("%d", carrinhoDao.buscarItem(id).getLivro().getId());
 	}
 	
 	public double getTotal() {
 		if(carrinho == null)
-			return 9999;
+			return 0;
 		
 		double total = this.carrinho.getFrete();
 		

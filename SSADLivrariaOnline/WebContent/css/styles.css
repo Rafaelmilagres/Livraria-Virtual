@@ -113,9 +113,6 @@
 	font-size: 18px;
 }
 
-.carrinho .itens .total span{
-	display: block;
-}
 
 .carrinho .itens .total #total{
 	float: right;
@@ -145,7 +142,6 @@
 	float: left;
 	height: 28px;
 	display: block;
-	width: 25px;
 	line-height: 28px;
 }
 
@@ -289,6 +285,7 @@ footer{
 
 .btn-finalizar{
 	margin-top: 8px;
+	float: right;
 }
 
 .frete{
@@ -302,12 +299,14 @@ footer{
 }
 
 .frete .form-control{
-	width: 50% !important;
+	width: 130px !important;
 }
 
 .frete .valor-frete{
 	background: #fff;
-	border: 1px solid #ddd;
+	border: 0;
+	outline: none;
+	cursor: default;
 	border-radius: 4px;
 	padding: 5px;
 	margin-top: 8px;
@@ -392,3 +391,17 @@ footer{
 .navbar-form{
 	padding: 0px 10px 0px 0 !important;
 } 
+
+a.list-group-item{
+	margin-bottom: 10px;
+}
+
+.btn-carrinho{
+	border: 0;
+    background: transparent;
+}
+
+.btn-aux{
+	border-top: 1px solid #ddd;
+	margin-top: 20px;
+}
