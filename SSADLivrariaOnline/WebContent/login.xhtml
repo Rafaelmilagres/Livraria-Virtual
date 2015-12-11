@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	     xmlns:f="http://java.sun.com/jsf/core"
+	     xmlns:h="http://java.sun.com/jsf/html">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+
+		<title>Saraiva Livros - Login</title>
+
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/styles.css" rel="stylesheet" />
+	</h:head>
+	<body class="background-pagina">
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<h:form class="form-signin">
+					<center>
+					<h3 class="logo-main"><span class="logo">Saraivada</span><span class="tipo">Livros</span></h3></center>
+					
+					<label for="inputUsername" class="label">Usuário</label>
+					<h:inputText value="#{loginBean.cliente.login}" id="inputUsername" class="form-control"></h:inputText>
+					
+					<h:outputLabel class="label" value="">Senha</h:outputLabel>
+					<h:inputSecret value="#{loginBean.cliente.senha}" id="inputPassword" class="form-control"></h:inputSecret>
+					
+					<h:commandButton action="#{loginBean.efetuarLogin()}" class="btn btn-md btn-primary btn-block" value="Entrar" />
+				</h:form>
+			</div>
+		</div>
+	</div>
+	</body>
+</html>

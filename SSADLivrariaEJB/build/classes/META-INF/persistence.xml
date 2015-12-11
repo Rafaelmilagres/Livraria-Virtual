@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
+	<persistence-unit name="upLivraria" transaction-type="JTA">    
+		<jta-data-source>java:/MYSQLDS</jta-data-source> 
+		<class>br.ssad.livraria.model.Livro</class>
+		<class>br.ssad.livraria.model.Editora</class>
+		<class>br.ssad.livraria.model.Categoria</class>
+		<class>br.ssad.livraria.model.Cliente</class>
+		<class>br.ssad.livraria.model.Item</class>
+		<class>br.ssad.livraria.model.Carrinho</class>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true"/>        
+		</properties>
+	</persistence-unit>
+</persistence> 

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	     xmlns:f="http://java.sun.com/jsf/core"
+	     xmlns:h="http://java.sun.com/jsf/html"
+	     xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />		
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+
+		<title>Saraiva Livros</title>
+
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/styles.css" rel="stylesheet" />
+	</h:head>
+	<body>
+	
+	<div class="container">
+		<div class="header clearfix">
+			<div class="container">
+				<div class="right clearfix">
+					<p class="usuarioinfo">Seja bem vindo, <span id="usuario">#{loginBean.cliente.nome}</span></p>
+					<c:if test="#{loginBean.cliente.adm}">
+						<p class="dashboard">
+							<a href="gerente-dashboard.xhtml">Dashboard</a>
+						</p>
+					</c:if>
+					<h:form>
+						<h:commandLink class="right logout" action="#{loginBean.efetuarLogout()}" value="Log Out" />
+					</h:form>
+					<a class="right carrinho-link" href="carrinho.xhtml">Carrinho</a>
+					<div class="clearfix"></div>
+					
+				</div>
+				<h3 class="logo-main"><span class="logo">Saraivada</span><span class="tipo">Livros</span></h3>
+				<nav class="navbar navbar-default">
+				   <div class="container-fluid">
+			         <ul class="nav navbar-nav">
+			            <li><a href="index.xhtml">Início</a></li>
+			            <li><a href="meus-pedidos.xhtml">Meus pedidos</a></li>
+			            <li role="presentation" class="dropdown">
+			            	<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> Categorias <span class="caret"></span> </a>
+			            	<ul class="dropdown-menu">	
+			            		<c:forEach var="categoria" items="#{livroBean.categorias}">
+			            			<li>
+			            				<h:form>
+			            					<h:commandLink action="#{livroBean.buscarCategoria(categoria)}">#{categoria.nome}</h:commandLink>
+			            				</h:form>
+			            			</li>
+			            		</c:forEach>  
+			            	</ul> 
+			            </li>
+			         </ul>
+			         <h:form class="navbar-form navbar-right" role="search">
+			         	<div class="form-group">
+			         		<h:inputText class="form-control" value="#{livroBean.termoBusca}"></h:inputText>
+			         	</div> 
+			         	<h:selectOneMenu class="form-control" value="#{livroBean.tipoBusca}">
+						  	<f:selectItem itemLabel="Livro" itemValue="1" />
+						  	<f:selectItem itemLabel="ISBN" itemValue="2" />
+						  	<f:selectItem itemLabel="Autor" itemValue="3" />
+						</h:selectOneMenu>
+						
+						<h:commandButton class="btn btn-primary" value="Pesquisar" action="#{livroBean.buscarTermo()}" />
+			         </h:form>
+				   </div>
+				</nav>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row marketing">
+				<div class="col-md-12">
+					<!-- Loja -->
+					<div class="row">
+						<!-- Lista de Livros -->
+						<div class="col-md-12 livros">
+							<h3>Livros</h3>
+						</div>
+
+						<c:forEach var="livro" items="#{livroBean.livros}" varStatus="loop">
+							<c:if test="#{livro.qtde > 0}">
+								<c:if test="#{loop.index % 3 == 0}">
+									<div class="clearfix separador"></div>	
+								</c:if>
+								<div class="col-md-4">
+									<div class="livro">
+										<c:if test="#{livro.url_img != ''}">
+											<img src="#{livro.url_img}" />
+										</c:if>
+										<c:if test="#{livro.url_img == ''}">
+											<img src="http://www.telepesquisa.com.br/assets/sem_logo-77a60d786dfab85705176f28b1e74acf.png" />
+										</c:if>
+										<div class="caption">
+											<p class="categoria">#{livro.categoria.nome}</p>
+											<h4 class="nome">#{livro.nome()}</h4>
+											<p class="autor">#{livro.autor()}</p>
+											<p class="preco">R$ #{livro.preco}</p>
+											<h:form>
+												<h:commandButton class="btn btn-primary btn-comprar" value="Comprar" action="#{carrinhoBean.cadastrarItem(livro)}" />
+											</h:form>
+										</div>
+									</div>
+								</div>
+							</c:if>
+						</c:forEach>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<footer class="footer container">
+			<p>&copy; 2015 Saraivada Livros, Inc.</p>
+		</footer>
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</div>
+	</body>
+</html>
