@@ -288,7 +288,7 @@ footer{
 }
 
 .btn-finalizar{
-	margin-top: 10px;
+	margin-top: 8px;
 }
 
 .frete{
@@ -310,6 +310,8 @@ footer{
 	border: 1px solid #ddd;
 	border-radius: 4px;
 	padding: 5px;
+	margin-top: 8px;
+	margin-right: 20px;
 	float: left;
 	text-align: center;
 	width: 75px;
@@ -345,4 +347,28 @@ footer{
 }
 .img-carrinho-compra{
 	width: 200px;
+}
+
+#calcula-frete{
+	float: right;
+    margin-top: -35px;
+}
+
+#sedex, #pac{
+	margin-top: 10px;
+}
+
+.dropdown-menu li a{
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	font-weight: 400;
+	line-height: 1.42857;
+	color: #333;
+	white-space: nowrap;
+}
+.dropdown-menu li a:hover{
+	color: #262626;
+	text-decoration: none;
+	background-color: #F5F5F5;
 }
